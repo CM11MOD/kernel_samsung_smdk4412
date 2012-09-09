@@ -81,6 +81,9 @@ endif
 ifeq ($(CONFIG_SND_BOEFFLA),y)
 snd-soc-wm8994-objs += boeffla_sound.o
 endif
+ifeq ($(CONFIG_SND_VOODOO),y)
+snd-soc-wm8994-objs += wm8994_voodoo.o
+endif
 snd-soc-wm8995-objs := wm8995.o
 snd-soc-wm9081-objs := wm9081.o
 snd-soc-wm9705-objs := wm9705.o
