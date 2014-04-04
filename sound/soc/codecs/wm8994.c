@@ -40,7 +40,9 @@
 #include "wm8994.h"
 #include "wm_hubs.h"
 
+#ifdef CONFIG_SND_BOEFFLA
 #include "boeffla_sound.h"
+#endif
 
 
 #define WM1811_JACKDET_MODE_NONE  0x0000
@@ -197,7 +199,9 @@ static int wm8994_write(struct snd_soc_codec *codec, unsigned int reg,
 
 	BUG_ON(reg > WM8994_MAX_REGISTER);
 
+#ifdef CONFIG_SND_BOEFFLA
 	value = Boeffla_sound_hook_wm8994_write(reg, value);
+#endif
 
 	if (!wm8994_volatile(codec, reg)) {
 		ret = snd_soc_cache_write(codec, reg, value);
@@ -4241,7 +4245,9 @@ static int wm8994_codec_probe(struct snd_soc_codec *codec)
 		break;
 	}
 
+#ifdef CONFIG_SND_BOEFFLA
 	Boeffla_sound_hook_wm8994_pcm_probe(codec);
+#endif
 
 	return 0;
 
